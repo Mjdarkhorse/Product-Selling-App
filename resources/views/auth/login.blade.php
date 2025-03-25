@@ -35,6 +35,7 @@
    
   <button type="submit" class="btn btn-primary">Log In</button>
 </form>
+<a href="{{route('forget_Password')}}">Forget Password</a>
 </div>
 @endsection
 
