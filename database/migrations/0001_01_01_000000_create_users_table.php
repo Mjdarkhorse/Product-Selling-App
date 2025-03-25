@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('phone_no')->nullable();
             $table->string('Is_varified')->default(0)->comment('0->unverified,1-Verified');
             $table->string('password');
+            $table->text('verification_token')->nullable();
+            $table->timestamp('token_expires_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
