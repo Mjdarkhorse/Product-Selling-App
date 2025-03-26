@@ -22,6 +22,10 @@ Route::get('/reset-password/{token}', [AuthController::class, 'resetPasswordView
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('resetPassword');
 Route::get('/updated-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
 
+Route::get('/mail-verification', [AuthController::class, 'mailVerificationView'])->name('mailVerificationView');
+Route::post('/mail-verification', [AuthController::class, 'mailVerification'])->name('mailVerification');
+
+
 Route::get('/user/dashboard', function () {
     return 'User Dashboard';
 })->name('user.dashboard');

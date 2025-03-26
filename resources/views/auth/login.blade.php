@@ -35,7 +35,9 @@
    
   <button type="submit" class="btn btn-primary">Log In</button>
 </form>
-<a href="{{route('forget_Password')}}">Forget Password</a>
+<a href="{{route('forget_Password')}}">Forget Password</a> |
+<a href="{{route('mailVerificationView')}}">Mail Verification</a>
+
 </div>
 @endsection
 

@@ -165,4 +165,29 @@ class AuthController extends Controller
             return abort(404, "Something went wrong");
         }
     }
+    public function mailVerificationView()
+    {
+        try {
+            return view('auth.mailVerificationView');
+        } catch (\Exception $e) {
+            return abort(404, "Something went wrong");
+        }
+    }
+    public function mailVerification(Request $request)
+    {
+        try {
+            $isExist = User::where('email', $request->email)->first();
+            if (!$isExist) {
+                return back()->with('error', 'This email is invalid');
+            }
+            $user = User::find($isExist->id);
+            $user->verification_token = Str::random(60);
+            $user->token_expires_at = Carbon::now()->addHour();
+            $user->save();
+            $this->sendVarificationaMail($user);
+            return back()->with('success', 'Verification link sent to your mail !!');
+        } catch (\Exception $e) {
+            return abort(404, "Something went wrong");
+        }
+    }
 }
